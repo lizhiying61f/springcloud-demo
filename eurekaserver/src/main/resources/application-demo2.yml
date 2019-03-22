@@ -1,0 +1,11 @@
+server:
+  port: 8762
+
+spring:
+  profiles: demo2
+eureka:
+  instance:
+    hostname: demo2
+  client:
+    serviceUrl:
+      defaultZone: http://demo1:8761/eureka/
