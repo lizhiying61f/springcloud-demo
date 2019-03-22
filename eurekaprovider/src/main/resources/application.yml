@@ -1,0 +1,25 @@
+server:
+  port: 8766
+#  client2 8765
+#需要指明spring.application.name,这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个name
+spring:
+  application:
+    name: eurka-provider1
+  zipkin:
+    base-url: http://localhost:9411
+
+eureka:
+  client:
+#  配置文件中注明自己的服务注册中心的地址
+    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://demo1:8761/eureka/
+#要看Hystrix，需要加入如下配置，
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"

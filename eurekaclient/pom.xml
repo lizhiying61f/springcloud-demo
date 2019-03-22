@@ -35,6 +35,17 @@
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
         <!-- 断路器监控 Hystrix Dashboard 结束 -->
+
+        <!-- 添加对ZIpkin支持 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-spring-beans</artifactId>
+            <version>5.5.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

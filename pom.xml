@@ -17,6 +17,7 @@
         <module>config</module>
         <module>serviceturbine</module>
         <module>zipkinserver</module>
+        <module>eurekaprovider</module>
     </modules>
 
     <parent>
