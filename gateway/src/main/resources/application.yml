@@ -1,0 +1,32 @@
+server:
+  port: 8801
+eureka:
+  client:
+#  配置文件中注明自己的服务注册中心的地址
+    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://demo1:8761/eureka/
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+#       是否与服务注册于发现组件进行结合，通过 serviceId 转发到具体的服务实例。默认为 false，设为 true 便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+#       例如在eurekaclient项目中有一个 http://localhost:8765/hi?name=lzhiy的请求，此时同样可以用
+#       http://localhost:8801/EURKA-CLIENT1/hi?name=lzhiy去访问。
+#  ！！！也就是说，将gateway注册到服务中心后，网关会自动代理所有的在注册中心的服务，访问这些服务的语法为！！！
+#  ！！！http://网关地址：端口/调用服务的spring.application.name 的大写/具体的path
+          enabled: true
+#    id：我们自定义的路由 ID，保持唯一
+#    uri：目标服务地址
+#    predicates：路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
+#    filters：过滤规则，本示例暂时没用。
+#    配置路由可以在配置文件中使用，也可以在启动类使用
+      routes:
+      - id: route1
+        uri: http://www.baidu.com
+        predicates:
+        - Path=/spring-cloud
+
